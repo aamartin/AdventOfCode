@@ -20,7 +20,6 @@ namespace AoC_7
                 newline = newline.Trim();
                 var parts = newline.Split('_');
 
-                var outter = new Dictionary<string, Dictionary<string, int>>();
                 var outerbag = parts[0].Trim();
                 var innerbags = parts[1].Split(',');
                 Dictionary<string, int> ibag = new Dictionary<string, int>();
@@ -41,24 +40,24 @@ namespace AoC_7
                 }
                 bags[outerbag] = ibag;
             }
-            //var finbags = new List<string>();
-            //var trails = new Dictionary<string, List<string>>();
+
             foreach (var outterbag in bags.Keys)
             {
                 if (bags[outterbag] != null)
                 {
-                    var trail = new List<string>();
-                    if (CheckMatches(bags, bags[outterbag], "shiny gold", trail))
+                    if (CheckMatches(bags, bags[outterbag], "shiny gold"))
                     {
                         total++;
-                        //finbags.Add(outterbag);
-                        //trails[outterbag] = trail;
                     }
                 }
             }
-            //int foo = finbags.Distinct().Count();
+
+            // Part 1 answer
             Console.WriteLine(total);
+
+            // Part 2 answer
             var depth = GoDeep(bags, bags["shiny gold"]);
+            Console.WriteLine(depth);
         }
 
         private static int GoDeep(Dictionary<string, Dictionary<string, int>> bags, Dictionary<string, int> insideBags)
@@ -73,18 +72,17 @@ namespace AoC_7
             return total;
         }
 
-        private static bool CheckMatches(Dictionary<string, Dictionary<string, int>> bags, Dictionary<string, int> value, string v, List<string> trial)
+        private static bool CheckMatches(Dictionary<string, Dictionary<string, int>> bags, Dictionary<string, int> innerBags, string targetBag)
         {
-            if (value == null) return false;
-            foreach (var bag in value.Keys)
+            if (innerBags == null) return false;
+            foreach (var bag in innerBags.Keys)
             {
-                if (string.Equals(bag, v)) return true;
+                if (string.Equals(bag, targetBag)) return true;
                 else
                 {
                     if(bags.ContainsKey(bag) && bags[bag] != null)
                     {
-                        trial.Add(bag);
-                        if (CheckMatches(bags, bags[bag], v, trial)) return true;
+                        if (CheckMatches(bags, bags[bag], targetBag)) return true;
                     }
                 }
             }
