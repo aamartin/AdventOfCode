@@ -11,9 +11,46 @@ namespace AoC_8
     {
         static void Main(string[] args)
         {
+            Part1();
+            Part2();
+        }
+
+        private static void Part1()
+        {
+            var lines = File.ReadAllLines("input.txt");
+            var accumulator = 0;
+            var instruction = 0;
+            List<int> executed = new List<int>();
+            do
+            {
+                executed.Add(instruction);
+                var opcommand = lines[instruction];
+                var parts = opcommand.Split(' ');
+                var op = parts[0];
+                var value = int.Parse(parts[1].Replace("+", ""));
+
+                switch (op)
+                {
+                    case "acc":
+                        accumulator = accumulator + value;
+                        instruction++;
+                        break;
+                    case "jmp":
+                        instruction = instruction + value;
+                        break;
+                    case "nop":
+                        instruction++;
+                        break;
+                }
+            } while (!executed.Contains(instruction));
+            Console.WriteLine(accumulator);
+        }
+
+        private static void Part2()
+        {
             var lines = File.ReadAllLines("input.txt").ToList();
             var accumulator = 0;
-            for(int i = 0; i < lines.Count(); i++)
+            for (int i = 0; i < lines.Count(); i++)
             {
                 var copylines = new List<string>(lines);
                 var instruction = 0;
@@ -54,7 +91,7 @@ namespace AoC_8
                             instruction++;
                             break;
                     }
-                    if (executed.Contains(instruction)) 
+                    if (executed.Contains(instruction))
                     {
                         looping = true;
                     }
@@ -65,38 +102,7 @@ namespace AoC_8
                     break;
                 }
             }
-            
-            Console.WriteLine(accumulator);
-        }
 
-        private void Part1()
-        {
-            var lines = File.ReadAllLines("input.txt");
-            var accumulator = 0;
-            var instruction = 0;
-            List<int> executed = new List<int>();
-            do
-            {
-                executed.Add(instruction);
-                var opcommand = lines[instruction];
-                var parts = opcommand.Split(' ');
-                var op = parts[0];
-                var value = int.Parse(parts[1].Replace("+", ""));
-
-                switch (op)
-                {
-                    case "acc":
-                        accumulator = accumulator + value;
-                        instruction++;
-                        break;
-                    case "jmp":
-                        instruction = instruction + value;
-                        break;
-                    case "nop":
-                        instruction++;
-                        break;
-                }
-            } while (!executed.Contains(instruction));
             Console.WriteLine(accumulator);
         }
     }
