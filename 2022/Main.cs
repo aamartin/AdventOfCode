@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AOCDay1
+namespace AoC2022
 {
 
 
@@ -16,6 +16,7 @@ namespace AOCDay1
             Day3.Execute("Day3.txt");
             Day4.Execute("Day4.txt");
             Day5.Execute("Day5.txt");
+            Day6.Execute("Day6.txt");
         }
     }
         

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace AOCDay1
+namespace AoC2022
 {
     class Day4
     {
