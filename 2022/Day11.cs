@@ -12,10 +12,8 @@ namespace AoC2022
     {
         internal static void Execute(string file)
         {
-            //var answer = new Answer();
-            //answer.Part2(file);
             Console.WriteLine("Day 11");
-            //Console.WriteLine($"Part1: {Part1(file)}");
+            Console.WriteLine($"Part1: {Part1(file)}");
             Console.WriteLine($"Part2: {Part2(file)}");
             Console.WriteLine();
         }
