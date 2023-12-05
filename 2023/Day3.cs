@@ -75,7 +75,7 @@ namespace AoC2023
                 map.Add(line.ToCharArray().ToList());
             }
 
-            Console.WriteLine("Day 2");
+            Console.WriteLine("Day 3");
             Console.WriteLine($"Part1: {Part1(map)}");
             Console.WriteLine($"Part2: {Part2(map)}");
             Console.WriteLine();
