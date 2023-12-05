@@ -83,26 +83,6 @@ namespace AoC2023
             return cards;
         }
 
-        private static Dictionary<Card, int> ParseCardsPart2(string file)
-        {
-            Dictionary<Card, int> cards = new Dictionary<Card, int>();
-            var lines = File.ReadAllLines(file);
-            foreach (var line in lines)
-            {
-                var lineParts = line.Split(':');
-                var card = new Card();
-                card.ID = lineParts[0].Replace("Card ", "");
-                var numParts = lineParts[1].Split('|');
-
-                foreach (var item in numParts[0].Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList())
-                    card.WinningNumbers.Add(int.Parse(item));
-                foreach (var item in numParts[1].Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList())
-                    card.Numbers.Add(int.Parse(item));
-
-                cards.Add(card, 1);
-            }
-            return cards;
-        }
 
         private static int Part2(string file)
         {
