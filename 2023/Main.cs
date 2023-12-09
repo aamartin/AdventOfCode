@@ -18,6 +18,7 @@ namespace AoC2022
             //Day4.Execute("Day4.txt");
             //Day5.Execute("Day5.txt");
             Day6.Execute("Day6.txt");
+            Day7.Execute("Day7.txt");
         }
     }
         
